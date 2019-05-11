@@ -1,0 +1,51 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: tensquare-article #指定服务名
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.61.131:3306/tensquare_article?characterEncoding=UTF8
+    username: root
+    password: 123
+  #数据源配置
+  data:
+    mongodb:
+      # 主机地址
+      host: 192.168.61.131
+      # 数据库
+      database: commentdb
+      # 默认端口是27017
+      port: 27017
+  jpa:
+    database: MySQL
+    show-sql: true
+  redis:
+    # Redis服务器地址（默认localhost）
+    host: 192.168.61.131
+    # Redis服务器连接端口（6379）
+    port: 6379
+    # Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器连接密码（默认为空）
+    password:
+    # 连接超时时间（毫秒）
+    timeout: 5000
+    jedis:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制，默认是8）
+        max-active: 8
+        # 连接池中的最大空闲连接（使用负值表示没有限制，默认是8）
+        max-idle: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制，默认是-1ms）
+        max-wait: -1ms
+        # 连接池中的最小空闲连接（默认是0）
+        min-idle: 0
+eureka:
+  client:
+    #Eureka服务的地址
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    #用于表示在猜测主机名时，服务器的IP地址应该与操作系统报告的主机名相对应。(注册服务和客户端如果在一台机器上则无需配置)
+    prefer-ip-address: true
